@@ -53,7 +53,7 @@
 						th:value="${item.value}" th:field="*{gender}" th:errorclass="is-invalid" />
 					<label class="form-check-label" th:text="${item.key}"></label>
 				</div>
-				<div classs="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+				<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
 			</div>
 			<!-- 登録ボタン -->
 			<input type="submit" th:value="#{user.signup.btn}"
