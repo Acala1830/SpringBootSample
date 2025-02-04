@@ -91,6 +91,13 @@
 		    <artifactId>webjars-locator</artifactId>
 		    <version>0.52</version>
 		</dependency>
+		<!-- validation -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
+		    <version>3.4.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
