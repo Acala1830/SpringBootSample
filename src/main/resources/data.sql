@@ -9,8 +9,8 @@ VALUES('system@co.jp','password', 'システム管理者', '2000-01-01', 21, 1, 
 
 /* 部署マスタ */
 INSERT INTO m_department(department_id, department_name)
-VALUES(1, 'Tom'),
-(2, 'Tom')
+VALUES(1, 'システム管理部'),
+(2, '営業部')
 ;
 
 /* 給料テーブル */
