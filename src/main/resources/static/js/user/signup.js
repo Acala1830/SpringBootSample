@@ -10,46 +10,46 @@ jQuery(function($){
   });
 });
 
-
 /** ユーザー登録処理 */
 function signupUser() {
-	// バリデーション結果をクリア
-	removeValidResult();
-	// フォームの値を取得
-	var formData = $('#signup-form').serializeArray();
-	
-	// ajax通信
-	$.ajax({
-	    type : "POST",
-	    cache : false,
-	    url : '/user/signup/rest',
-	    data: formData,
-	    dataType : 'json',
-	}).done(function(data) {
-	    // ajax成功時の処理
-	    console.log(data);
 
-	    if(data.result === 90) {
-	      // validationエラー時の処理
-	      $.each(data.errors, function (key, value) {
-	        reflectValidResult(key, value)
-	      });
+  // バリデーション結果をクリア
+  removeValidResult();
 
-	    } else if(data.result === 0) {
-	      alert('ユーザーを登録しました');
-	      // ログイン画面にリダイレクト
-	      window.location.href = '/login';
-	    }
+  // フォームの値を取得
+  var formData = $('#signup-form').serializeArray();
 
-	}).fail(function(jqXHR, textStatus, errorThrown) {
-	    // ajax失敗時の処理
-	    alert('ユーザー登録に失敗しました');
+  // ajax通信
+  $.ajax({
+    type : "POST",
+    cache : false,
+    url : '/user/signup/rest',
+    data: formData,
+    dataType : 'json',
+  }).done(function(data) {
+    // ajax成功時の処理
+    console.log(data);
 
-	}).always(function() {
-	    // 常に実行する処理
-	});
+    if(data.result === 90) {
+      // validationエラー時の処理
+      $.each(data.errors, function (key, value) {
+        reflectValidResult(key, value)
+      });
+
+    } else if(data.result === 0) {
+      alert('ユーザーを登録しました');
+      // ログイン画面にリダイレクト
+      window.location.href = '/login';
+    }
+
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    // ajax失敗時の処理
+    alert('ユーザー登録に失敗しました');
+
+  }).always(function() {
+    // 常に実行する処理
+  });
 }
-
 
 /** バリデーション結果をクリア */
 function removeValidResult() {
