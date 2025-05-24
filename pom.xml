@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>SpringBootSample13-3-3</artifactId>
+	<artifactId>SpringBootSample12-2-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBootSample13-3-3</name>
+	<name>SpringBootSample12-2-1</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -118,24 +118,19 @@
 		    <groupId>org.thymeleaf.extras</groupId>
 		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
-		<!-- datatables -->
+		<!-- https://mvnrepository.com/artifact/org.webjars/datatables -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>datatables</artifactId>
 		    <version>1.10.21</version>
 		</dependency>
-		<!-- datatables-plugins -->
+		<!-- https://mvnrepository.com/artifact/org.webjars/datatables-plugins -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>datatables-plugins</artifactId>
 		    <version>1.10.21</version>
 		    <scope>runtime</scope>
 		</dependency>
-		<!-- JPA -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
 	</dependencies>
 
 	<build>
