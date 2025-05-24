@@ -31,54 +31,55 @@ public class UserRestController {
 
     @Autowired
     private UserService userService;
-
+    
     @Autowired
     private ModelMapper modelMapper;
-
+    
     @Autowired
     private MessageSource messageSource;
 
     /** ユーザーを検索 */
     @GetMapping("/get/list")
     public List<MUser> getUserList(UserListForm form) {
-
-        // formをMUserクラスに変換
-        MUser user = modelMapper.map(form, MUser.class);
-
-        // ユーザー一覧取得
-        List<MUser> userList = userService.getUsers(user);
-        return userList;
+    	// formをMUserクラスに変換
+    	MUser user = modelMapper.map(form, MUser.class);
+    	
+    	// ユーザー一覧取得
+    	List<MUser> userList = userService.getUsers(user);
+    	
+    	return userList;
     }
-
+    
     /** ユーザーを登録 */
     @PostMapping("/signup/rest")
-    public RestResult postSignup(@Validated(GroupOrder.class) SignupForm form,
-            BindingResult bindingResult, Locale locale) {
-
-        // 入力チェック結果
-        if (bindingResult.hasErrors()) {
-            // チェック結果:NG
-            Map<String, String> errors = new HashMap<>();
-
-            // エラーメッセージ取得
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                String message = messageSource.getMessage(error, locale);
-                errors.put(error.getField(), message);
-            }
-            // エラー結果の返却
-            return new RestResult(90, errors);
-        }
-
-        // formをMUserクラスに変換
-        MUser user = modelMapper.map(form, MUser.class);
-
-        // ユーザー登録
-        userService.signup(user);
-
-        // 結果の返却
-        return new RestResult(0, null);
+    public RestResult postSignup(@Validated(GroupOrder.class)SignupForm form,
+    		BindingResult bindingResult, Locale locale) {
+    	// 入力チェック結果
+    	if(bindingResult.hasErrors()) {
+    		// チェック結果：NG
+    		Map<String, String> errors = new HashMap<>();
+    		
+    		// エラーメッセージ取得
+    		for(FieldError error: bindingResult.getFieldErrors()) {
+    			String message = messageSource.getMessage(error,locale);
+    			errors.put(error.getField(),message);
+    		}
+    		
+    		// エラー結果の返却
+    		return new RestResult(90, errors);
+    	}
+    	
+    	// formをMUserクラスに変換
+    	MUser user = modelMapper.map(form,  MUser.class);
+    	
+    	// ユーザー登録
+    	userService.signup(user);
+    	
+    	// 結果の返却
+    	return new RestResult(0, null);
     }
-
+    
+    
     /** ユーザーを更新 */
     @PutMapping("/update")
     public int updateUser(UserDetailForm form) {
